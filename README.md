@@ -10,6 +10,7 @@ I live at the crossroads of storytelling, code, and ceremony — weaving relatio
 
 - **Currently rebranding and forging [AvaClaw](https://github.com/avadisabelle/ava-claw)** — a messaging & agent gateway CLI that connects chat channels (Telegram, Discord, WhatsApp, iMessage) with AI agents. Think of it as the nervous system between humans and their AI companions.
 - **Building [ava-pi](https://github.com/avadisabelle/ava-pi)** — a monorepo of AI coding agent tools with a CLI called `pva` for interactive, terminal-based coding assistance.
+- **Connecting [ava-langchainjs](https://github.com/avadisabelle/ava-langchainjs) and [ava-langgraphjs](https://github.com/avadisabelle/ava-langgraphjs)** — carrying strategy-aware prompt decomposition, provenance, and inquiry routing across the AvaStack.
 
 ---
 
@@ -19,6 +20,7 @@ I live at the crossroads of storytelling, code, and ceremony — weaving relatio
 |---------|-----------|
 | [**AvaClaw**](https://github.com/avadisabelle/ava-claw) | Agent gateway CLI — multi-channel messaging meets AI |
 | [**ava-pi**](https://github.com/avadisabelle/ava-pi) | AI coding agent tools & `pva` CLI |
+| [**ava-langchainjs**](https://github.com/avadisabelle/ava-langchainjs) | LangChain.js primitives for relational intelligence and prompt decomposition |
 | [**ava-langgraphjs**](https://github.com/avadisabelle/ava-langgraphjs) | LangGraph.js explorations & agent orchestration |
 | [**ava-Flowise**](https://github.com/avadisabelle/ava-Flowise) | Visual agent flow builder |
 | [**coaia-narrative**](https://github.com/avadisabelle/coaia-narrative) | Narrative computing & storytelling platform |
