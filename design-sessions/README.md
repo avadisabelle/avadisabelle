@@ -32,6 +32,7 @@ themselves.
 | # | Session | Status | Output |
 |---|---------|--------|--------|
 | 001 | [Root portal — scaffold](./001-root-portal/) | 🌱 intention set, prompt drafted | An agent-ready scaffolding prompt + full spec for the root commons |
+| 002 | [Root portal — v1 build plan](./002-root-portal-build-plan/) | 📐 upgraded, awaiting accept | An accept-ready Next.js/Vercel build plan with the ceremony-key gate |
 
 ---
 
