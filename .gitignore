@@ -153,6 +153,9 @@ venv.bak/
 
 # mkdocs documentation
 /site
+# ...except the Sanctuaire Agentique portal source, which is published from ./site
+!/site/
+!/site/**
 
 # mypy
 .mypy_cache/
