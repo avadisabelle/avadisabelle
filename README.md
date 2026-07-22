@@ -80,6 +80,8 @@ I share the journey across a few worlds — the builder side and the creative si
 [![X](https://img.shields.io/badge/X-avadisabelle-000000?style=flat-square&logo=x&logoColor=white)](https://x.com/avadisabelle)
 [![Patreon](https://img.shields.io/badge/Patreon-avadisabelle-FF424D?style=flat-square&logo=patreon&logoColor=white)](https://www.patreon.com/avadisabelle)
 
+🏛️ **Or cross the threshold** → the [**Sanctuaire Agentique**](https://avadisabelle.sanctuaireagentique.com) — a breathing portal where you're met as a guest, not a user. Built from this repo, published on every push.
+
 ---
 
 <sub>*Technology is ceremony. Code is relation. We build together.* 🎨</sub>
