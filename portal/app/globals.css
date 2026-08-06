@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------ */
+/* The Sanctuaire palette — one token set, both themes.               */
+/* prefers-color-scheme sets the default; a data-theme attribute wins */
+/* in both directions.                                                */
+/* ------------------------------------------------------------------ */
+:root {
+  --shell: #14101c;
+  --panel: #1c1726;
+  --ink: #ece5f3;
+  --muted: #9c90ac;
+  --line: #2c2440;
+  --purple: #b79ad8;
+  --river: #4fbeb4;
+  --ember: #e0975a;
+  --glow: 224, 151, 90;
+
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --font-body: "Optima", "Gill Sans Nova", "Gill Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --shell: #f2ece1;
+    --panel: #fbf7f0;
+    --ink: #241a2e;
+    --muted: #736a80;
+    --line: #e4d9c8;
+    --purple: #5a3b82;
+    --river: #1e6e70;
+    --ember: #b7652c;
+    --glow: 183, 101, 44;
+  }
+}
+
+:root[data-theme="light"] {
+  --shell: #f2ece1;
+  --panel: #fbf7f0;
+  --ink: #241a2e;
+  --muted: #736a80;
+  --line: #e4d9c8;
+  --purple: #5a3b82;
+  --river: #1e6e70;
+  --ember: #b7652c;
+  --glow: 183, 101, 44;
+}
+
+:root[data-theme="dark"] {
+  --shell: #14101c;
+  --panel: #1c1726;
+  --ink: #ece5f3;
+  --muted: #9c90ac;
+  --line: #2c2440;
+  --purple: #b79ad8;
+  --river: #4fbeb4;
+  --ember: #e0975a;
+  --glow: 224, 151, 90;
+}
+
+@layer base {
+  html {
+    color-scheme: light dark;
+  }
+  body {
+    background: var(--shell);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: rgba(var(--glow), 0.28);
+  }
+  :focus-visible {
+    outline: 2px solid var(--river);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+/* The Two Row — two vessels, one river. */
+.tworow {
+  height: 14px;
+  width: min(360px, 80%);
+}
+.tworow line {
+  stroke: var(--river);
+  stroke-width: 2.4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
