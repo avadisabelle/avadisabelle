@@ -157,6 +157,11 @@ venv.bak/
 !/site/
 !/site/**
 
+# ...and the Next.js root-commons app under /portal (it has its own .gitignore
+# for node_modules/.next/.env — re-include its source past the lib/build/dist rules)
+!/portal/
+!/portal/**
+
 # mypy
 .mypy_cache/
 .dmypy.json
