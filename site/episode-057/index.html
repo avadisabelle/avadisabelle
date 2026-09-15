@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seven Paths, One Belt — the Episode 057 constellation</title>
+<meta name="description" content="Seven code paths strung on one wampum belt, read through four complementary lenses. Part of the Sanctuaire Agentique.">
+<style>
+  :root{
+    --shell:#F1EEF5; --panel:#FBF9FD; --ink:#241A2E; --muted:#756A83;
+    --line:#DED7E6; --purple:#5A3B82; --purple-deep:#43286A; --river:#1E6E70;
+    --ember:#C2773A;
+    --font-display:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --font-body:"Optima","Gill Sans Nova","Gill Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+    --font-mono:"JetBrains Mono","SFMono-Regular",Menlo,Consolas,"Liberation Mono",monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --shell:#14101C; --panel:#1C1726; --ink:#ECE5F3; --muted:#9C90AC;
+      --line:#2C2440; --purple:#B79AD8; --purple-deep:#0F0B18; --river:#4FBEB4;
+      --ember:#E0975A;
+    }
+  }
+  :root[data-theme="dark"]{
+    --shell:#14101C; --panel:#1C1726; --ink:#ECE5F3; --muted:#9C90AC;
+    --line:#2C2440; --purple:#B79AD8; --purple-deep:#0F0B18; --river:#4FBEB4;
+    --ember:#E0975A;
+  }
+  :root[data-theme="light"]{
+    --shell:#F1EEF5; --panel:#FBF9FD; --ink:#241A2E; --muted:#756A83;
+    --line:#DED7E6; --purple:#5A3B82; --purple-deep:#43286A; --river:#1E6E70;
+    --ember:#C2773A;
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0}
+  .wrap{
+    background:var(--shell); color:var(--ink);
+    font-family:var(--font-body); line-height:1.5;
+    padding:clamp(18px,4vw,56px) clamp(16px,4vw,40px) 72px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page{max-width:1040px; margin:0 auto; display:flex; flex-direction:column; gap:clamp(34px,5vw,52px)}
+
+  /* ---------- return ---------- */
+  .return{margin:0 0 -8px}
+  .return a{
+    font:600 11px var(--font-mono); letter-spacing:.2em; text-transform:uppercase;
+    color:var(--muted); text-decoration:none; border-bottom:1px solid transparent;
+  }
+  .return a:hover,.return a:focus-visible{color:var(--ember); border-bottom-color:var(--ember)}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative; border-radius:18px; overflow:hidden;
+    border:1px solid var(--line); background:var(--purple-deep); min-height:300px;
+    display:flex; align-items:flex-end}
+  .hero canvas{position:absolute; inset:0; width:100%; height:100%; display:block}
+  .hero-scrim{position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(15,11,24,.15) 0%, rgba(15,11,24,.05) 42%, rgba(15,11,24,.72) 100%)}
+  .hero-copy{position:relative; z-index:2; padding:clamp(22px,4vw,40px)}
+  .eyebrow{font:600 12px var(--font-body); letter-spacing:.24em; text-transform:uppercase;
+    color:#E6DCC9; opacity:.9; margin:0 0 10px}
+  .hero h1{font-family:var(--font-display); font-weight:600; color:#F4EFE6;
+    font-size:clamp(34px,6vw,60px); line-height:1.0; margin:0; text-wrap:balance;
+    text-shadow:0 2px 20px rgba(0,0,0,.35)}
+  .hero h1 em{font-style:italic; color:#D9C6EC}
+  .hero .lede{margin:14px 0 0; max-width:52ch; color:#E9E2F0; font-size:clamp(15px,2vw,17px);
+    text-shadow:0 1px 12px rgba(0,0,0,.4)}
+
+  /* ---------- thesis ---------- */
+  .thesis{font-family:var(--font-display); font-size:clamp(19px,2.6vw,25px); line-height:1.42;
+    color:var(--ink); max-width:36ch; margin:0; text-wrap:pretty}
+  .thesis b{color:var(--purple); font-weight:600}
+  .thesis .river{color:var(--river)}
+
+  /* ---------- figure blocks ---------- */
+  .fig{background:var(--panel); border:1px solid var(--line); border-radius:16px;
+    padding:clamp(18px,3vw,26px); overflow:hidden}
+  .lens{font:600 12px var(--font-body); letter-spacing:.2em; text-transform:uppercase; color:var(--river); margin:0}
+  .fig h2{font-family:var(--font-display); font-weight:600; color:var(--ink);
+    font-size:clamp(23px,3.4vw,30px); line-height:1.08; margin:.28em 0 .18em; text-wrap:balance}
+  .fig h2 .n{color:var(--purple); font-style:italic; margin-right:.4em}
+  .cap{color:var(--muted); font-size:15px; max-width:64ch; margin:0 0 18px}
+  .cap b{color:var(--ink); font-weight:600}
+  .scroll{overflow-x:auto; overflow-y:hidden}
+  .scroll svg{display:block}
+
+  /* constellation svg classes */
+  .c-edge{fill:none; stroke:var(--line); stroke-width:1.6}
+  .c-edge.flow{stroke:var(--purple); stroke-width:2.4; marker-end:url(#arrowP)}
+  .c-edge.flowdash{stroke:var(--purple); stroke-width:2; stroke-dasharray:7 5; marker-end:url(#arrowP)}
+  .c-edge.thin{stroke:var(--muted); stroke-width:1.4; stroke-dasharray:2 7}
+  .c-edge.faint{stroke:var(--line); stroke-width:1.5}
+  .c-edge.river{stroke:var(--river); stroke-width:2; marker-end:url(#arrowR)}
+  .c-edge.tworow{stroke:var(--river); stroke-width:2.6}
+  .c-zone{stroke:var(--line); stroke-width:1; stroke-dasharray:1 8; opacity:.7}
+  .c-zone-lab{fill:var(--muted); font:600 11px var(--font-body); letter-spacing:.14em; text-transform:uppercase; opacity:.85}
+  .c-box{fill:var(--panel); stroke:var(--line); stroke-width:1.5}
+  .c-box.live{stroke:var(--ember); stroke-width:2}
+  .c-bead{fill:var(--purple)}
+  .c-bead.live{fill:var(--ember)}
+  .c-title{fill:var(--ink); font:600 13px var(--font-mono)}
+  .c-sub{fill:var(--muted); font:400 12.5px var(--font-body)}
+  .c-elabel{fill:var(--muted); font:500 11.5px var(--font-body)}
+  .c-elabel-bg{fill:var(--panel)}
+  .mk-p{fill:var(--purple)} .mk-r{fill:var(--river)}
+
+  /* legend */
+  .legend{display:flex; flex-wrap:wrap; gap:14px 22px; margin-top:16px; padding-top:16px;
+    border-top:1px solid var(--line)}
+  .legend .k{display:flex; align-items:center; gap:9px; font-size:13px; color:var(--muted)}
+  .legend svg{flex:0 0 auto}
+  .legend b{color:var(--ink); font-weight:600}
+
+  /* timeline svg classes */
+  .t-base{stroke:var(--line); stroke-width:1.2}
+  .t-grid{stroke:var(--line); stroke-width:1; stroke-dasharray:2 7}
+  .t-line{fill:none; stroke:var(--purple); stroke-width:2.6}
+  .t-line-ember{fill:none; stroke:var(--ember); stroke-width:2.6}
+  .t-dot{fill:var(--purple); stroke:var(--panel); stroke-width:2}
+  .t-dot.ember{fill:var(--ember)}
+  .t-lab{fill:var(--ink); font:600 13px var(--font-body)}
+  .t-lab.ember{fill:var(--ember)}
+  .t-sub{fill:var(--muted); font:400 12px var(--font-body)}
+  .t-quiet{fill:var(--muted); font:italic 500 14px var(--font-display)}
+  .t-month{fill:var(--muted); font:600 11px var(--font-body); letter-spacing:.16em}
+
+  /* ---------- bridge ---------- */
+  .bridge{display:grid; grid-template-columns:1fr 132px 1fr; gap:0; position:relative}
+  .bridge .river-seam{position:absolute; left:50%; top:8px; bottom:8px; width:2px;
+    transform:translateX(-50%); background:linear-gradient(var(--river),var(--river));
+    opacity:.35}
+  .b-head{padding:0 4px 14px; grid-column:span 1}
+  .b-head.c{grid-column:2; text-align:center}
+  .b-head .when{font:600 11px var(--font-body); letter-spacing:.18em; text-transform:uppercase}
+  .b-head .when.jun{color:var(--purple)} .b-head .when.jul{color:var(--ember)}
+  .b-head .what{font-family:var(--font-display); font-size:17px; color:var(--ink); margin-top:2px}
+  .b-cell{padding:15px 16px; border-top:1px solid var(--line); display:flex; align-items:center}
+  .b-cell.left{justify-content:flex-end; text-align:right}
+  .b-cell.left .q{font-family:var(--font-display); font-size:15.5px; line-height:1.4; color:var(--ink)}
+  .b-cell.right .q{font:400 13.5px/1.5 var(--font-mono); color:var(--ink)}
+  .b-cell.mid{grid-column:2; justify-content:center; border-top:1px solid var(--line)}
+  .bead-principle{background:var(--panel); border:1.5px solid var(--river); color:var(--river);
+    border-radius:999px; padding:7px 4px; width:118px; text-align:center;
+    font:600 11.5px var(--font-body); letter-spacing:.03em; line-height:1.25;
+    box-shadow:0 0 0 4px color-mix(in srgb, var(--river) 8%, transparent)}
+  @media (max-width:720px){
+    .bridge{grid-template-columns:1fr; }
+    .bridge .river-seam{display:none}
+    .b-head{display:none}
+    .b-cell, .b-cell.mid{grid-column:1; border-top:1px solid var(--line); justify-content:flex-start; text-align:left}
+    .b-cell.left{text-align:left; justify-content:flex-start}
+    .b-cell.mid{padding-top:16px; border-top:2px solid var(--river)}
+    .b-row{display:contents}
+  }
+
+  /* ---------- matrix ---------- */
+  table.mx{border-collapse:collapse; width:100%; min-width:660px; font-size:14px}
+  table.mx thead th{font:600 11px var(--font-body); letter-spacing:.12em; text-transform:uppercase;
+    color:var(--muted); text-align:left; padding:0 14px 10px; vertical-align:bottom;
+    border-bottom:1.5px solid var(--line)}
+  table.mx tbody td{padding:14px; border-bottom:1px solid var(--line); vertical-align:top; line-height:1.42}
+  table.mx tbody tr:last-child td{border-bottom:none}
+  .mx .assume{font-weight:600; color:var(--ink)}
+  .mx .assume code{font:500 12px var(--font-mono); color:var(--purple); display:block; margin-top:4px}
+  .mx .exclude{color:var(--muted)}
+  .mx .answer{color:var(--ink)}
+  .mx .construct code{font:600 12px var(--font-mono); color:var(--river)}
+  .mx .glyph{display:inline-block; margin-right:7px; letter-spacing:1px;
+    font:700 12px var(--font-mono); color:var(--purple)}
+
+  /* ---------- colophon ---------- */
+  .colophon{border-top:1px solid var(--line); padding-top:22px; display:flex; flex-wrap:wrap;
+    gap:18px; align-items:baseline; justify-content:space-between}
+  .colophon .vow{font-family:var(--font-display); font-style:italic; font-size:18px; color:var(--purple)}
+  .colophon .meta{font:400 12.5px var(--font-mono); color:var(--muted); text-align:right}
+  .colophon .meta b{color:var(--ink); font-weight:600}
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important; transition:none !important} }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="page">
+
+    <p class="return"><a href="../">&larr; back to the threshold</a></p>
+
+    <!-- HERO -->
+    <header class="hero">
+      <canvas id="belt" aria-hidden="true"></canvas>
+      <div class="hero-scrim"></div>
+      <div class="hero-copy">
+        <p class="eyebrow">Episode 057 · Miadi Wampum Narrative Engine</p>
+        <h1>Seven paths.<br><em>One belt.</em></h1>
+        <p class="lede">Not seven folders — one wampum belt laid across the disk. Beads of story, grounding, and code strung on the same sinew, read here through four complementary lenses.</p>
+      </div>
+    </header>
+
+    <!-- THESIS -->
+    <p class="thesis">The engine's whole thesis in one line: <b>narrative is a function of belt × position.</b> These paths are that thesis, <span class="river">woven back into the ground it grew from.</span></p>
+
+    <!-- LENS I — SPATIAL / NODE-LINK -->
+    <section class="fig">
+      <p class="lens">Lens I · Spatial</p>
+      <h2><span class="n">i.</span>The Constellation</h2>
+      <p class="cap">Where the seven live, and how they reach each other. Two <b>June</b> beads at the top (the story and its scholarship) <b>crystallize</b> downward into packages, then <b>generalize</b> sideways — while the two <b>still-warm</b> runtimes hold the river between them, two vessels on one course.</p>
+      <div class="scroll">
+        <svg id="constellation" viewBox="0 0 960 600" width="960" role="img"
+             aria-label="Node-link map of the seven paths across four altitude bands">
+          <defs>
+            <marker id="arrowP" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto">
+              <path d="M0,0 L6.5,3 L0,6 Z" class="mk-p"/></marker>
+            <marker id="arrowR" markerWidth="9" markerHeight="9" refX="6.5" refY="3" orient="auto">
+              <path d="M0,0 L6.5,3 L0,6 Z" class="mk-r"/></marker>
+          </defs>
+          <g id="c-layers"></g>
+        </svg>
+      </div>
+      <div class="legend" aria-hidden="true">
+        <span class="k"><svg width="34" height="8"><line x1="1" y1="4" x2="33" y2="4" stroke="var(--purple)" stroke-width="2.4"/></svg><b>lineage flow</b> — crystallize / generalize</span>
+        <span class="k"><svg width="34" height="8"><line x1="1" y1="4" x2="33" y2="4" stroke="var(--river)" stroke-width="2"/></svg><b>cross-runtime relation</b></span>
+        <span class="k"><svg width="34" height="12"><line x1="1" y1="3" x2="33" y2="3" stroke="var(--river)" stroke-width="2.4"/><line x1="1" y1="9" x2="33" y2="9" stroke="var(--river)" stroke-width="2.4"/></svg><b>the Two Row</b> — one river, two vessels</span>
+        <span class="k"><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="var(--ember)"/></svg><b>still warm</b> — live / newest</span>
+      </div>
+    </section>
+
+    <!-- LENS II — TEMPORAL / TIMELINE -->
+    <section class="fig">
+      <p class="lens">Lens II · Temporal</p>
+      <h2><span class="n">ii.</span>The Breath</h2>
+      <p class="cap">The dates tell a breath. Mid-June, everything is born at once — synthesis, map, and beacon in a single inhale. Then <b>five weeks of stillness</b>. Then, on <b>July 20</b>, <span style="color:var(--ember)">composition</span> is built and the lineage inhales again.</p>
+      <div class="scroll">
+        <svg viewBox="0 0 900 300" width="900" role="img"
+             aria-label="Timeline of the constellation as a breath: a June inhale, a long quiet, a July inhale">
+          <defs>
+            <linearGradient id="breathGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="var(--purple)" stop-opacity="0.30"/>
+              <stop offset="1" stop-color="var(--purple)" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- baseline + grid -->
+          <line class="t-base" x1="30" y1="225" x2="872" y2="225"/>
+          <line class="t-grid" x1="415" y1="60" x2="415" y2="225"/>
+          <line class="t-grid" x1="726" y1="60" x2="726" y2="225"/>
+          <!-- breath area -->
+          <path class="t-area" fill="url(#breathGrad)" d="M30,225 L52,225 C58,225 62,78 74,74 C88,70 100,120 116,152 C140,200 168,214 196,218 L560,218 C620,218 720,214 780,150 C806,116 824,98 838,96 C848,95 856,130 860,158 L860,225 Z"/>
+          <!-- breath line -->
+          <path class="t-line" d="M52,225 C58,225 62,78 74,74 C88,70 100,120 116,152 C140,200 168,214 196,218 L560,218 C620,218 720,214 780,150 C806,116 824,98 838,96 C848,95 856,130 860,158"/>
+          <path class="t-line-ember" d="M700,215 C734,211 760,196 780,150 C806,116 824,98 838,96"/>
+          <!-- quiet label -->
+          <text class="t-quiet" x="378" y="205" text-anchor="middle">the held breath — five weeks of stillness</text>
+          <!-- june callout -->
+          <circle class="t-dot" cx="72" cy="74" r="5"/>
+          <circle class="t-dot" cx="90" cy="72" r="5"/>
+          <text class="t-lab" x="112" y="58">Jun 15–16 · the birth</text>
+          <text class="t-sub" x="112" y="74">synthesis · map · beacon — one inhale</text>
+          <!-- july callout -->
+          <circle class="t-dot ember" cx="838" cy="96" r="6"/>
+          <text class="t-lab ember" x="826" y="66" text-anchor="end">Jul 20 · the inhale returns</text>
+          <text class="t-sub" x="826" y="82" text-anchor="end">composition built — src · dist · test</text>
+          <!-- months -->
+          <text class="t-month" x="40" y="248">JUNE</text>
+          <text class="t-month" x="420" y="248">JULY</text>
+          <text class="t-month" x="872" y="248" text-anchor="end" fill="var(--river)">now</text>
+        </svg>
+      </div>
+    </section>
+
+    <!-- LENS III — RELATIONAL / BRIDGE -->
+    <section class="fig">
+      <p class="lens">Lens III · Relational</p>
+      <h2><span class="n">iii.</span>The Crossing</h2>
+      <p class="cap">One ethic crosses the whole span, unchanged. What June wrote as <b>wampum discipline</b>, July re-wrote as <b>software discipline</b> — the same vow in two tongues. The bead on the river names what they share.</p>
+      <div class="bridge">
+        <div class="river-seam" aria-hidden="true"></div>
+        <div class="b-head"><div class="when jun">June · the loom</div><div class="what">wampum discipline</div></div>
+        <div class="b-head c"><div class="when" style="color:var(--river)">shared vow</div></div>
+        <div class="b-head"><div class="when jul">July · the reader</div><div class="what">composition package</div></div>
+
+        <div class="b-row">
+          <div class="b-cell left"><p class="q">“We reproduce meanings; we do not author or correct them.”</p></div>
+          <div class="b-cell mid"><span class="bead-principle">Read,<br>don't rewrite</span></div>
+          <div class="b-cell right"><p class="q">Reading is the only operation. No repair, no normalization.</p></div>
+        </div>
+        <div class="b-row">
+          <div class="b-cell left"><p class="q">“Build the loom; let the keepers weave.”</p></div>
+          <div class="b-cell mid"><span class="bead-principle">Offer,<br>don't claim</span></div>
+          <div class="b-cell right"><p class="q">Everything projected is <code style="font:inherit">canonical: false</code> — a proposal, not a ruling.</p></div>
+        </div>
+        <div class="b-row">
+          <div class="b-cell left"><p class="q">Consent &amp; custodianship precede any encoding of knowledge.</p></div>
+          <div class="b-cell mid"><span class="bead-principle">Evidence,<br>not authority</span></div>
+          <div class="b-cell right"><p class="q">A slug reading <code style="font:inherit">ep250-</code> is evidence, not authorization to claim episode 250.</p></div>
+        </div>
+        <div class="b-row">
+          <div class="b-cell left"><p class="q">Governance is structural — the block travels with the belt.</p></div>
+          <div class="b-cell mid"><span class="bead-principle">Governance in<br>the structure</span></div>
+          <div class="b-cell right"><p class="q">The dependency runs one way; provenance rides in <code style="font:inherit">episode.yaml</code>.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LENS IV — ANALYTICAL / MATRIX -->
+    <section class="fig">
+      <p class="lens">Lens IV · Analytical</p>
+      <h2><span class="n">iv.</span>The Second Eye</h2>
+      <p class="cap">The load-bearing finding beneath all seven paths: the belt is not NCP's replacement but its <b>second eye</b> — <i>Etuaptmumk</i>. Each Western assumption the Narrative Context Protocol inherits from Dramatica, the belt answers with a construct of its own.</p>
+      <div class="scroll">
+        <table class="mx">
+          <thead>
+            <tr>
+              <th style="width:24%">NCP / Dramatica assumes</th>
+              <th style="width:22%">…which excludes</th>
+              <th style="width:32%">the belt answers</th>
+              <th style="width:22%">engine construct</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="assume">Linear-causal<code>storybeat.sequence: int</code></td>
+              <td class="exclude">Cyclical, spatial, simultaneous narrative</td>
+              <td class="answer">A belt is a 2D field; anchors are addressed by <b>(row, col)</b>, not order</td>
+              <td class="construct"><span class="glyph">WP</span><code>notation</code></td>
+            </tr>
+            <tr>
+              <td class="assume">Individual protagonist<code>i / you / we / they</code></td>
+              <td class="exclude">Collective, relational, land-as-agent subjects</td>
+              <td class="answer">Subjects are <b>relations</b> — nations, canoe &amp; ship, the dish — read from positions</td>
+              <td class="construct"><span class="glyph">◇</span><code>RelationalPerspective</code></td>
+            </tr>
+            <tr>
+              <td class="assume">Conflict as engine</td>
+              <td class="exclude">Harmony, reciprocity, right-relation as engine</td>
+              <td class="answer">The engine is the <b>treaty</b> — making, holding, renewing relationship</td>
+              <td class="construct"><span class="glyph">⛓</span><code>CommitmentLog</code></td>
+            </tr>
+            <tr>
+              <td class="assume">Subtext / storytelling split</td>
+              <td class="exclude">Traditions where the telling <i>is</i> the meaning</td>
+              <td class="answer">Each perspective's reading is a different, <b>co-valid</b> telling — no separable "true" subtext</td>
+              <td class="construct"><span class="glyph">↳</span><code>readings: Perspective → text</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- COLOPHON -->
+    <footer class="colophon">
+      <p class="vow">Build the loom; let the keepers weave.</p>
+      <p class="meta">Read from seven paths · <b>Episode 057</b><br>this page reads the constellation — it does not rewrite it · <b>canonical: false</b></p>
+    </footer>
+
+  </div>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------------- CONSTELLATION (data-driven) ---------------- */
+  var NS = "http://www.w3.org/2000/svg";
+  var nodes = [
+    {id:'ep057', x:210, y:95,  title:'episode 057',           sub:'the founding, recorded'},
+    {id:'ground',x:640, y:95,  title:'foundations/',          sub:'wampum-narrative-engine'},
+    {id:'beacon',x:180, y:290, title:'…/foundations-',        sub:'wampum-narrative-engine'},
+    {id:'seed',  x:485, y:290, title:'packages/foundations',  sub:'the empty seed'},
+    {id:'comp',  x:790, y:290, title:'packages/composition',  sub:'the live edge · Jul 20', live:true},
+    {id:'mw',    x:330, y:500, title:'medicine-wheel',        sub:'the relational graph', live:true},
+    {id:'fw',    x:665, y:500, title:'forgewright',           sub:'the authoring surface', live:true}
+  ];
+  var byId = {}; nodes.forEach(function(n){ byId[n.id]=n; });
+  var edges = [
+    {a:'ep057', b:'ground', label:'rests on',      cls:'faint',    bow:-30},
+    {a:'ground',b:'beacon', label:'crystallizes',  cls:'flow',     bow:34},
+    {a:'beacon',b:'seed',   label:'generalizes',   cls:'flowdash', bow:-24},
+    {a:'seed',  b:'comp',   label:'siblings',      cls:'thin',     bow:-20},
+    {a:'ground',b:'mw',     label:'nodes + links', cls:'river',    bow:36},
+    {a:'ep057', b:'fw',     label:'holds ep057b',  cls:'river',    bow:-40}
+  ];
+  var BW=196, BH=64;
+
+  function el(name, attrs){ var e=document.createElementNS(NS,name);
+    for(var k in attrs){ e.setAttribute(k, attrs[k]); } return e; }
+
+  function build(){
+    var g = document.getElementById('c-layers');
+    if(!g) return;
+
+    // zone separators + labels
+    var zones = [
+      {y:158, lab:'story · grounding  ·  june'},
+      {y:378, lab:'crystallize  →  generalize'},
+      {y:566, lab:'live · still warm'}
+    ];
+    zones.forEach(function(z){
+      g.appendChild(el('line',{class:'c-zone', x1:24, y1:z.y, x2:936, y2:z.y}));
+      var t=el('text',{class:'c-zone-lab', x:24, y:z.y-9}); t.textContent=z.lab; g.appendChild(t);
+    });
+
+    // edges (curved)
+    edges.forEach(function(e){
+      var a=byId[e.a], b=byId[e.b];
+      var dx=b.x-a.x, dy=b.y-a.y, len=Math.hypot(dx,dy)||1;
+      var ux=dx/len, uy=dy/len;
+      // trim endpoints toward node edges (elliptical-ish pad)
+      var padA=Math.abs(uy)>Math.abs(ux)?38:104, padB=Math.abs(uy)>Math.abs(ux)?40:106;
+      var ax=a.x+ux*padA, ay=a.y+uy*padA, bx=b.x-ux*padB, by=b.y-uy*padB;
+      var mx=(ax+bx)/2, my=(ay+by)/2;
+      var nx=-uy, ny=ux;
+      var cx=mx+nx*e.bow, cy=my+ny*e.bow;
+      g.appendChild(el('path',{class:'c-edge '+e.cls, d:'M '+ax+' '+ay+' Q '+cx+' '+cy+' '+bx+' '+by}));
+      // label with bg
+      var lw=e.label.length*6.3+14;
+      g.appendChild(el('rect',{class:'c-elabel-bg', x:cx-lw/2, y:cy-9, width:lw, height:18, rx:5}));
+      var tl=el('text',{class:'c-elabel', x:cx, y:cy+4, 'text-anchor':'middle'}); tl.textContent=e.label;
+      g.appendChild(tl);
+    });
+
+    // the Two Row — two parallel lines between the live runtimes
+    var mw=byId['mw'], fw=byId['fw'];
+    var x1=mw.x+BW/2+6, x2=fw.x-BW/2-6;
+    g.appendChild(el('line',{class:'c-edge tworow', x1:x1, y1:mw.y-8, x2:x2, y2:fw.y-8}));
+    g.appendChild(el('line',{class:'c-edge tworow', x1:x1, y1:mw.y+8, x2:x2, y2:fw.y+8}));
+    var rlw='two vessels · one river'.length*6.3+14, rcx=(x1+x2)/2;
+    g.appendChild(el('rect',{class:'c-elabel-bg', x:rcx-rlw/2, y:mw.y+20, width:rlw, height:18, rx:5}));
+    var rt=el('text',{class:'c-elabel', x:rcx, y:mw.y+33, 'text-anchor':'middle'}); rt.textContent='two vessels · one river';
+    g.appendChild(rt);
+
+    // nodes (drawn last, opaque)
+    nodes.forEach(function(n){
+      var gx=n.x-BW/2, gy=n.y-BH/2;
+      g.appendChild(el('rect',{class:'c-box'+(n.live?' live':''), x:gx, y:gy, width:BW, height:BH, rx:11}));
+      g.appendChild(el('circle',{class:'c-bead'+(n.live?' live':''), cx:gx+18, cy:n.y, r:5}));
+      var t1=el('text',{class:'c-title', x:gx+34, y:n.y-4}); t1.textContent=n.title; g.appendChild(t1);
+      var t2=el('text',{class:'c-sub',   x:gx+34, y:n.y+15}); t2.textContent=n.sub; g.appendChild(t2);
+    });
+  }
+  build();
+
+  /* ---------------- HERO BELT (canvas) ---------------- */
+  var canvas = document.getElementById('belt');
+  if(canvas && canvas.getContext){
+    var ctx = canvas.getContext('2d');
+    var IVORY='#E9E1D2', PURPLE='#4A2E68', EMBER='#C2773A', FIELD='#F0EADD';
+    // Two Row pattern on a white field (9 rows)
+    var pattern=[FIELD,FIELD,PURPLE,PURPLE,FIELD,PURPLE,PURPLE,FIELD,FIELD];
+    var anchorRow=4;
+    var geom=null;
+
+    function layout(){
+      var dpr=window.devicePixelRatio||1;
+      var w=canvas.clientWidth||canvas.parentNode.clientWidth;
+      var h=canvas.clientHeight||300;
+      canvas.width=Math.round(w*dpr); canvas.height=Math.round(h*dpr);
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      var rows=pattern.length;
+      var cols=Math.max(22, Math.round(w/24));
+      geom={w:w,h:h,rows:rows,cols:cols,cw:w/cols,ch:h/rows};
+    }
+    function anchorCols(){
+      var arr=[]; for(var i=0;i<7;i++){ arr.push(Math.round((i+0.5)/7*geom.cols)); } return arr;
+    }
+    function bead(cx,cy,bw,bh,color){
+      var r=Math.min(bw,bh)*0.28;
+      ctx.beginPath();
+      ctx.moveTo(cx-bw/2+r, cy-bh/2);
+      ctx.arcTo(cx+bw/2, cy-bh/2, cx+bw/2, cy+bh/2, r);
+      ctx.arcTo(cx+bw/2, cy+bh/2, cx-bw/2, cy+bh/2, r);
+      ctx.arcTo(cx-bw/2, cy+bh/2, cx-bw/2, cy-bh/2, r);
+      ctx.arcTo(cx-bw/2, cy-bh/2, cx+bw/2, cy-bh/2, r);
+      ctx.closePath();
+      ctx.fillStyle=color; ctx.fill();
+      // shell sheen
+      ctx.beginPath();
+      ctx.ellipse(cx-bw*0.16, cy-bh*0.2, bw*0.22, bh*0.16, 0, 0, Math.PI*2);
+      ctx.fillStyle='rgba(255,255,255,0.14)'; ctx.fill();
+    }
+    function draw(progress){
+      if(!geom) return;
+      ctx.clearRect(0,0,geom.w,geom.h);
+      var anchors=anchorCols();
+      var revealCols=Math.round(geom.cols*progress);
+      for(var c=0;c<geom.cols;c++){
+        if(c>revealCols) continue;
+        var colProg = (c===revealCols)? (geom.cols*progress - revealCols) : 1;
+        for(var r=0;r<geom.rows;r++){
+          var color=pattern[r];
+          if(r===anchorRow && anchors.indexOf(c)>=0) color=EMBER;
+          var cx=(c+0.5)*geom.cw, cy=(r+0.5)*geom.ch;
+          var bw=geom.cw*0.82*(0.5+0.5*colProg), bh=geom.ch*0.82*(0.5+0.5*colProg);
+          ctx.globalAlpha=colProg; bead(cx,cy,bw,bh,color); ctx.globalAlpha=1;
+        }
+      }
+    }
+    function render(full){
+      layout();
+      if(reduce||full){ draw(1); return; }
+      var start=null, dur=1100;
+      function step(ts){
+        if(start===null) start=ts;
+        var p=Math.min(1,(ts-start)/dur);
+        draw(p);
+        if(p<1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    render(false);
+    var rt2;
+    window.addEventListener('resize', function(){
+      clearTimeout(rt2); rt2=setTimeout(function(){ render(true); }, 150);
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
