@@ -157,10 +157,19 @@ venv.bak/
 !/site/
 !/site/**
 
-# ...and the Next.js root-commons app under /portal (it has its own .gitignore
-# for node_modules/.next/.env — re-include its source past the lib/build/dist rules)
-!/portal/
-!/portal/**
+# ...and the Next.js root-commons app, which lives at the root of this branch so
+# v0.dev and Vercel find its package.json. Re-include its lib/ past the Python lib/ rule.
+!/lib/
+!/lib/**
+
+# Next.js
+/node_modules
+/.next/
+/out/
+.env*.local
+*.tsbuildinfo
+next-env.d.ts
+.vercel
 
 # mypy
 .mypy_cache/
