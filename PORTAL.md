@@ -5,12 +5,13 @@ are met as guests, not users. The public sees only a **threshold**; the commons
 opens to a visitor who offers a **ceremony key**.
 
 Built to the design session at
-[`../design-sessions/002-root-portal-build-plan/PLAN.md`](../design-sessions/002-root-portal-build-plan/PLAN.md).
+[`design-sessions/002-root-portal-build-plan/PLAN.md`](design-sessions/002-root-portal-build-plan/PLAN.md).
+
+The app lives at the root of this branch (`app/`, `components/`, `lib/`, `package.json`) so v0.dev and Vercel find it without a Root Directory setting. `README.md` stays Ava's profile page.
 
 ## Run it
 
 ```bash
-cd portal
 npm install
 cp .env.example .env.local   # then edit the secrets
 npm run dev                  # http://localhost:3000
@@ -67,8 +68,8 @@ rewrites it. Two vessels, one river.
 
 ## Deploy (Vercel)
 
-- Import the repo; set **Root Directory = `portal`** (this is a *Vercel project
-  setting*, not `vercel.json`).
+- Import the repo on this branch. The app is at the root, so leave **Root Directory**
+  empty (v0.dev cannot choose a subfolder).
 - Add the env vars above.
 - Set the domain to `sanctuaireagentique.com`.
 - This app is **not** a static export — the gate needs the Next.js runtime.
